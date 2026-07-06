@@ -12,7 +12,7 @@ stages:
 variables:
   TF_IN_AUTOMATION: "true"
   GITLAB_TOKEN: $TF_GITLAB_TOKEN
-  GOOGLE_CREDENTIALS: $GCP_SA_KEY
+  GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp-sa-key.json
 
 default:
   image:
@@ -20,6 +20,9 @@ default:
     entrypoint: [""]
   before_script:
     - apk add --no-cache make zsh
+    - printf '%s' "$GOOGLE_CREDENTIALS" | base64 -d > "$GOOGLE_APPLICATION_CREDENTIALS"
+    - test -s "$GOOGLE_APPLICATION_CREDENTIALS" || { echo "decoded SA key is empty — check GOOGLE_CREDENTIALS var"; exit 1; }
+    - unset GOOGLE_CREDENTIALS
 
 validate:
   stage: validate

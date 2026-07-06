@@ -14,4 +14,13 @@ variable "tree" {
     groups = optional(any, {})
   })
 }
+
+variable "github_owner" {
+  type = string
+}
+
+variable "github_token" {
+  type      = string
+  sensitive = true
+}
 ##[<] 🤖🤖

@@ -82,36 +82,70 @@ locals {
       ]...)
     }
   ]
+
+  github_repos = merge([
+    for lvl in local.levels : {
+      for k, p in lvl.projects : p.path => {
+        description = p.description
+        topics      = p.topics
+      }
+    }
+  ]...)
+}
+
+resource "github_repository" "this" {
+  for_each = local.github_repos
+
+  name        = each.key
+  description = each.value.description
+  topics      = each.value.topics
+  visibility  = "public"
 }
 
 module "l0" {
   source = "./modules/level"
 
-  groups   = local.levels[0].groups
-  projects = local.levels[0].projects
+  groups       = local.levels[0].groups
+  projects     = local.levels[0].projects
+  github_owner = var.github_owner
+  github_token = var.github_token
+
+  depends_on = [github_repository.this]
 }
 
 module "l1" {
   source = "./modules/level"
 
-  groups     = local.levels[1].groups
-  projects   = local.levels[1].projects
-  parent_ids = module.l0.group_ids
+  groups       = local.levels[1].groups
+  projects     = local.levels[1].projects
+  parent_ids   = module.l0.group_ids
+  github_owner = var.github_owner
+  github_token = var.github_token
+
+  depends_on = [github_repository.this]
 }
 
 module "l2" {
   source = "./modules/level"
 
-  groups     = local.levels[2].groups
-  projects   = local.levels[2].projects
-  parent_ids = module.l1.group_ids
+  groups       = local.levels[2].groups
+  projects     = local.levels[2].projects
+  parent_ids   = module.l1.group_ids
+  github_owner = var.github_owner
+  github_token = var.github_token
+
+  depends_on = [github_repository.this]
 }
 
 module "l3" {
   source = "./modules/level"
 
-  groups     = local.levels[3].groups
-  projects   = local.levels[3].projects
-  parent_ids = module.l2.group_ids
+  groups       = local.levels[3].groups
+  projects     = local.levels[3].projects
+  parent_ids   = module.l2.group_ids
+  github_owner = var.github_owner
+  github_token = var.github_token
+
+  depends_on = [github_repository.this]
 }
 ##[<] 🤖🤖

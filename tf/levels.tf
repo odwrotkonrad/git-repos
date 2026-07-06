@@ -85,7 +85,10 @@ locals {
 
   github_repos = merge([
     for lvl in local.levels : {
-      for k, p in lvl.projects : p.path => p.description
+      for k, p in lvl.projects : p.path => {
+        description = p.description
+        topics      = p.topics
+      }
     }
   ]...)
 }
@@ -94,7 +97,8 @@ resource "github_repository" "this" {
   for_each = local.github_repos
 
   name        = each.key
-  description = each.value
+  description = each.value.description
+  topics      = each.value.topics
   visibility  = "public"
 }
 

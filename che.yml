@@ -1,0 +1,19 @@
+##[>] 🤖🤖
+repo:
+  include:
+    repoTemplate:
+      - files:
+          - source: templates/1-env/local.env.repo.tpl
+            dest:
+              - {path: .env, options: {writeType: mergeUpsert}}
+          - source: templates/2-docs/makefile-agents.md.repo.tpl
+            dest:
+              - {path: assets/data/makefile.agents.md}
+          - source: templates/2-docs/repo-structure.md.repo.tpl
+            dest:
+              - {path: assets/data/repo-structure.md}
+          - source: templates/3-agents/AGENTS.md.repo.tpl
+            dest:
+              - {path: CLAUDE.md}
+              - {path: AGENTS.md, options: {renderReferencedFiles: true}}
+##[<] 🤖🤖

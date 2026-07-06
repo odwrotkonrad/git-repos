@@ -23,4 +23,13 @@ variable "parent_ids" {
   type    = map(string)
   default = {}
 }
+
+variable "github_owner" {
+  type = string
+}
+
+variable "github_token" {
+  type      = string
+  sensitive = true
+}
 ##[<] 🤖🤖

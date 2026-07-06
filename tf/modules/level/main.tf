@@ -30,4 +30,15 @@ resource "gitlab_branch_protection" "this" {
   merge_access_level = "maintainer"
   allow_force_push   = each.value.allow_force_push
 }
+
+resource "gitlab_project_push_mirror" "github" {
+  for_each = var.projects
+
+  project                 = gitlab_project.this[each.key].id
+  url                     = "https://${var.github_owner}:${var.github_token}@github.com/${var.github_owner}/${each.value.path}.git"
+  auth_method             = "password"
+  enabled                 = true
+  only_protected_branches = true
+  keep_divergent_refs     = false
+}
 ##[<] 🤖🤖

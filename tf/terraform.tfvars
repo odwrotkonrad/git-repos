@@ -1,4 +1,6 @@
 ##[>] 🤖🤖
+github_owner = "odwrotkonrad"
+
 tree = {
   name        = "konradodwrot"
   path        = "konradodwrot"

@@ -18,7 +18,7 @@ resource "gitlab_project" "this" {
   description      = each.value.description
   topics           = each.value.topics
   default_branch   = "main"
-  visibility_level = "public"
+  visibility_level = each.value.visibility
 }
 
 resource "gitlab_branch_protection" "this" {

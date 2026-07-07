@@ -15,5 +15,6 @@
 `init` init the backend and providers
 `fmt` format all terraform files in place
 `validate` check formatting and validate the config
+`lock` regenerate the provider lock with hashes for all CI + dev platforms
 `plan` show the plan (writes tf/plan.tfplan for CI)
 `apply` apply the saved plan (plan.tfplan)

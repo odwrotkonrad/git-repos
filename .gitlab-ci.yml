@@ -10,7 +10,7 @@ stages:
   - apply
 
 variables:
-  CI_IMAGE: registry.gitlab.com/konradodwrot/infra/ci-images/ci-linux:v0.0.1
+  CI_IMAGE: registry.gitlab.com/konradodwrot/infra/ci-images/ci-linux:v0.0.6
   TF_IN_AUTOMATION: "true"
   GITLAB_TOKEN: $TF_GITLAB_TOKEN
   TF_VAR_github_token: $GITHUB_TOKEN
@@ -28,7 +28,7 @@ validate-pre-commit-all:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   variables:
-    CHE_DRY_RUN_RENDER_SECRETS: "true"
+    CHE_RENDER_TEMPLATES_DRY_RUN_SECRETS: "true"
   script:
     - make run-repo-ci-precommit-all
     - git diff --exit-code HEAD

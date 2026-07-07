@@ -7,6 +7,12 @@ tree = {
   description = "Root group."
 
   projects = {
+    conventions = {
+      name        = "conventions"
+      path        = "conventions"
+      description = "Canonical repo conventions: purpose docs, commenting, Makefile style."
+      topics      = ["conventions", "documentation", "standards"]
+    }
     configs = {
       name             = "configs"
       path             = "configs"

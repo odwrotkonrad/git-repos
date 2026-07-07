@@ -23,8 +23,8 @@ tree = {
     notes = {
       name        = "notes"
       path        = "notes"
-      description = "Shared space for user-agent cross-session collaboration: private, versioned markdown notes carrying context, decisions, plans, open threads across sessions and repos."
-      visibility  = "private"
+      description = "Shared space for user-agent cross-session collaboration: versioned markdown notes carrying context, decisions, plans, open threads across sessions and repos."
+      visibility  = "public"
       topics      = ["notes", "collaboration", "agents"]
     }
   }

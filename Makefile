@@ -4,9 +4,10 @@ SHELL := zsh
 .SHELLFLAGS := -c
 TF ?= terraform
 
+WRAPPERS :=
 COMMANDS := render-templates run-repo-ci-prepare-hooks run-repo-ci-precommit-all init fmt validate lock plan apply
 
-.PHONY: $(COMMANDS)
+.PHONY: $(WRAPPERS) $(COMMANDS)
 
 ##[>] Docs [genai-include]
 #[what] render *.repo.tpl onto the repo (.env, makefile.agents.md, repo-structure.md, CLAUDE.md, AGENTS.md, README.md)

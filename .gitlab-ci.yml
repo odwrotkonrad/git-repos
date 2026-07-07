@@ -10,7 +10,7 @@ stages:
   - apply
 
 variables:
-  CI_IMAGE: registry.gitlab.com/konradodwrot/infra/ci-images/ci-linux:v0.0.1
+  CI_IMAGE: registry.gitlab.com/konradodwrot/infra/ci-images/ci-linux:v0.0.6
   TF_IN_AUTOMATION: "true"
   GITLAB_TOKEN: $TF_GITLAB_TOKEN
   TF_VAR_github_token: $GITHUB_TOKEN

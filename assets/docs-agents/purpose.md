@@ -14,10 +14,3 @@ Hand-managed repo and group sprawl drifts. One `tfvars` tree declares every grou
 - Reviewable repo lifecycle: plan on MR, apply on main.
 - Consistent settings (paths, descriptions, topics) across the tree.
 
-## How To Use
-
-Edit the `tree` in `tf/terraform.tfvars`, then `make plan && make apply`. `make validate` checks formatting and config. CI validates and plans on MRs, applies on main.
-
-## Future Direction
-
-Tracks the git hosting footprint as it grows: new groups, projects, providers land in the `tfvars` tree first.

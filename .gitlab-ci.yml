@@ -28,7 +28,7 @@ validate-pre-commit-all:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   variables:
-    CHE_DRY_RUN_RENDER_SECRETS: "true"
+    CHE_RENDER_TEMPLATES_DRY_RUN_SECRETS: "true"
   script:
     - make run-repo-ci-precommit-all
     - git diff --exit-code HEAD

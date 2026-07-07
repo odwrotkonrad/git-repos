@@ -4,7 +4,7 @@ SHELL := zsh
 .SHELLFLAGS := -c
 TF ?= terraform
 
-COMMANDS := render-templates run-repo-ci-prepare-hooks run-repo-ci-precommit-all init fmt validate plan apply
+COMMANDS := render-templates run-repo-ci-prepare-hooks run-repo-ci-precommit-all init fmt validate lock plan apply
 
 .PHONY: $(COMMANDS)
 
@@ -37,6 +37,10 @@ fmt:
 validate:
 	$(TF) -chdir=tf fmt -check -recursive
 	@ci/tf.zsh validate
+
+#[what] regenerate the provider lock with hashes for all CI + dev platforms
+lock:
+	$(TF) -chdir=tf providers lock -platform=linux_amd64 -platform=darwin_arm64 -platform=darwin_amd64
 
 #[what] show the plan (writes tf/plan.tfplan for CI)
 plan:

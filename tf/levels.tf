@@ -77,6 +77,7 @@ locals {
             description      = p.description
             allow_force_push = try(p.allow_force_push, false)
             topics           = try(p.topics, [])
+            visibility       = try(p.visibility, "public")
           }
         }
       ]...)
@@ -88,6 +89,7 @@ locals {
       for k, p in lvl.projects : p.path => {
         description = p.description
         topics      = p.topics
+        visibility  = p.visibility
       }
     }
   ]...)
@@ -99,7 +101,7 @@ resource "github_repository" "this" {
   name        = each.key
   description = each.value.description
   topics      = each.value.topics
-  visibility  = "public"
+  visibility  = each.value.visibility
 }
 
 module "l0" {

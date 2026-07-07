@@ -10,6 +10,7 @@ variable "tree" {
       description      = string
       allow_force_push = optional(bool, false)
       topics           = optional(set(string), [])
+      visibility       = optional(string, "public")
     })), {})
     groups = optional(any, {})
   })

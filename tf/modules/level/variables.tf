@@ -16,6 +16,7 @@ variable "projects" {
     description      = string
     allow_force_push = bool
     topics           = set(string)
+    visibility       = string
   }))
 }
 

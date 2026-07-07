@@ -20,6 +20,13 @@ tree = {
       description      = "Dotfiles extended into root OS space, loaded onto the host from one root/ tree by che: symlinked, copied (.host.cp), or rendered (*.host.tpl)."
       topics           = ["dotfiles", "configuration", "macos", "zsh", "che"]
     }
+    notes = {
+      name        = "notes"
+      path        = "notes"
+      description = "Personal notes."
+      visibility  = "private"
+      topics      = ["notes"]
+    }
   }
 
   groups = {

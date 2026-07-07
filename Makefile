@@ -40,7 +40,7 @@ validate:
 
 #[what] regenerate the provider lock with hashes for all CI + dev platforms
 lock:
-	$(TF) -chdir=tf providers lock -platform=linux_amd64 -platform=darwin_arm64 -platform=darwin_amd64
+	$(TF) -chdir=tf providers lock -platform=linux_amd64 -platform=linux_arm64 -platform=darwin_arm64 -platform=darwin_amd64
 
 #[what] show the plan (writes tf/plan.tfplan for CI)
 plan:

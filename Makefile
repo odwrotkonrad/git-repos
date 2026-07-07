@@ -4,15 +4,25 @@ SHELL := zsh
 .SHELLFLAGS := -c
 TF ?= terraform
 
-COMMANDS := render-templates init fmt validate plan apply
+COMMANDS := render-templates run-repo-ci-prepare-hooks run-repo-ci-precommit-all init fmt validate plan apply
 
 .PHONY: $(COMMANDS)
 
 ##[>] Docs [genai-include]
-#[what] render *.repo.tpl onto the repo (.env, makefile.agents.md, CLAUDE.md, AGENTS.md)
+#[what] render *.repo.tpl onto the repo (.env, makefile.agents.md, repo-structure.md, CLAUDE.md, AGENTS.md, README.md)
 render-templates:
 	@che render-templates --repo
 ##[<] Docs
+
+##[>] CI [genai-include]
+#[what] install lefthook git hooks
+run-repo-ci-prepare-hooks:
+	@lefthook install --force
+
+#[what] run pre-commit hooks over all files (not just staged)
+run-repo-ci-precommit-all: run-repo-ci-prepare-hooks
+	@lefthook run pre-commit --all-files --force
+##[<] CI
 
 ##[>] Terraform [genai-include]
 #[what] init the backend and providers

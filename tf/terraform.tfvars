@@ -86,6 +86,12 @@ tree = {
           description = "Manages the GitLab groups, projects as code with Terraform"
           topics      = ["terraform", "infrastructure", "gitlab", "iac"]
         }
+        ci_images = {
+          name        = "ci-images"
+          path        = "ci-images"
+          description = "Shared CI container images: linux base bundling go, che, render-tpl, lefthook, yq, zig, goreleaser, terraform, glab."
+          topics      = ["ci", "docker", "container", "gitlab", "toolchain"]
+        }
       }
     }
   }

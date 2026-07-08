@@ -40,6 +40,13 @@ tree = {
       description = "Local claude session sandbox: kind cluster plus per-session pods running a config-baked image built FROM its published dev-sandbox toolchain base."
       topics      = ["sandbox", "kubernetes", "kind", "docker", "claude"]
     }
+    go_modules = {
+      name                = "go-modules"
+      path                = "go-modules"
+      description         = "Go monorepo: che (spec-driven dotfile loader, with the render engine and doc-rendering CLIs as its render/ package tree), get-os-open-files-with, get-term-open-files-with. Per-module go.mod and dir-prefixed release tags."
+      topics              = ["go", "monorepo", "cli", "che"]
+      pages_unique_domain = false
+    }
   }
 
   groups = {

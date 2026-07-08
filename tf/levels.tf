@@ -71,13 +71,14 @@ locals {
         for gk, g in lvl : {
           for pk, p in g.projects :
           "${g.path}/${p.path}" => {
-            name             = p.name
-            path             = p.path
-            group            = g.path
-            description      = p.description
-            allow_force_push = try(p.allow_force_push, false)
-            topics           = try(p.topics, [])
-            visibility       = try(p.visibility, "public")
+            name                = p.name
+            path                = p.path
+            group               = g.path
+            description         = p.description
+            allow_force_push    = try(p.allow_force_push, false)
+            topics              = try(p.topics, [])
+            visibility          = try(p.visibility, "public")
+            enable_local_runner = try(p.enable_local_runner, false)
           }
         }
       ]...)
@@ -107,10 +108,11 @@ resource "github_repository" "this" {
 module "l0" {
   source = "./modules/level"
 
-  groups       = local.levels[0].groups
-  projects     = local.levels[0].projects
-  github_owner = var.github_owner
-  github_token = var.github_token
+  groups          = local.levels[0].groups
+  projects        = local.levels[0].projects
+  local_runner_id = var.local_runner_id
+  github_owner    = var.github_owner
+  github_token    = var.github_token
 
   depends_on = [github_repository.this]
 }
@@ -118,11 +120,12 @@ module "l0" {
 module "l1" {
   source = "./modules/level"
 
-  groups       = local.levels[1].groups
-  projects     = local.levels[1].projects
-  parent_ids   = module.l0.group_ids
-  github_owner = var.github_owner
-  github_token = var.github_token
+  groups          = local.levels[1].groups
+  projects        = local.levels[1].projects
+  local_runner_id = var.local_runner_id
+  parent_ids      = module.l0.group_ids
+  github_owner    = var.github_owner
+  github_token    = var.github_token
 
   depends_on = [github_repository.this]
 }
@@ -130,11 +133,12 @@ module "l1" {
 module "l2" {
   source = "./modules/level"
 
-  groups       = local.levels[2].groups
-  projects     = local.levels[2].projects
-  parent_ids   = module.l1.group_ids
-  github_owner = var.github_owner
-  github_token = var.github_token
+  groups          = local.levels[2].groups
+  projects        = local.levels[2].projects
+  local_runner_id = var.local_runner_id
+  parent_ids      = module.l1.group_ids
+  github_owner    = var.github_owner
+  github_token    = var.github_token
 
   depends_on = [github_repository.this]
 }
@@ -142,11 +146,12 @@ module "l2" {
 module "l3" {
   source = "./modules/level"
 
-  groups       = local.levels[3].groups
-  projects     = local.levels[3].projects
-  parent_ids   = module.l2.group_ids
-  github_owner = var.github_owner
-  github_token = var.github_token
+  groups          = local.levels[3].groups
+  projects        = local.levels[3].projects
+  local_runner_id = var.local_runner_id
+  parent_ids      = module.l2.group_ids
+  github_owner    = var.github_owner
+  github_token    = var.github_token
 
   depends_on = [github_repository.this]
 }

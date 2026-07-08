@@ -99,9 +99,9 @@ tree = {
           topics      = ["terraform", "infrastructure", "gitlab", "iac"]
         }
         ci_images = {
-          name        = "ci-images"
-          path        = "ci-images"
-          description = "Shared CI container images: linux base bundling go, che, render-tpl, lefthook, yq, zig, goreleaser, terraform, glab."
+          name        = "oci-images"
+          path        = "oci-images"
+          description = "Shared OCI container images: multi-arch ci-linux CI base, dev-sandbox config-baked dev image."
           topics      = ["ci", "docker", "container", "gitlab", "toolchain"]
         }
       }

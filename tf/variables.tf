@@ -23,6 +23,14 @@ variable "local_runner_id" {
   default = null
 }
 
+variable "user_ssh_keys" {
+  type = map(object({
+    key        = string
+    usage_type = optional(string, "auth")
+  }))
+  default = {}
+}
+
 variable "github_owner" {
   type = string
 }

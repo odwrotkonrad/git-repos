@@ -12,13 +12,14 @@ resource "gitlab_group" "this" {
 resource "gitlab_project" "this" {
   for_each = var.projects
 
-  namespace_id     = gitlab_group.this[each.value.group].id
-  name             = each.value.name
-  path             = each.value.path
-  description      = each.value.description
-  topics           = each.value.topics
-  default_branch   = "main"
-  visibility_level = each.value.visibility
+  namespace_id       = gitlab_group.this[each.value.group].id
+  name               = each.value.name
+  path               = each.value.path
+  description        = each.value.description
+  topics             = each.value.topics
+  default_branch     = "main"
+  visibility_level   = each.value.visibility
+  pages_access_level = "public"
 }
 
 resource "gitlab_branch_protection" "this" {

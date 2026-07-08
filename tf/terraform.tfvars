@@ -50,10 +50,11 @@ tree = {
 
       projects = {
         che = {
-          name        = "che"
-          path        = "che"
-          description = "Spec-driven dotfile loader: detects OS+arch+virt, resolves a profile from che.yml, then loads only that profile's files, dirs, installs, and services. Renders *.tpl templates, each dest path deciding the target (relative: repo, ~/ or absolute: host), resolving op:// (1Password) secret refs at render time."
-          topics      = ["go", "cli", "dotfiles", "configuration", "1password"]
+          name                = "che"
+          path                = "che"
+          description         = "Spec-driven dotfile loader: detects OS+arch+virt, resolves a profile from che.yml, then loads only that profile's files, dirs, installs, and services. Renders *.tpl templates, each dest path deciding the target (relative: repo, ~/ or absolute: host), resolving op:// (1Password) secret refs at render time."
+          topics              = ["go", "cli", "dotfiles", "configuration", "1password"]
+          pages_unique_domain = false
         }
         render_files = {
           name        = "render-files"

@@ -79,6 +79,7 @@ locals {
             topics              = try(p.topics, [])
             visibility          = try(p.visibility, "public")
             enable_local_runner = try(p.enable_local_runner, false)
+            pages_unique_domain = try(p.pages_unique_domain, null)
           }
         }
       ]...)

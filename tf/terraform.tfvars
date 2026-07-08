@@ -1,5 +1,6 @@
 ##[>] 🤖🤖
-github_owner = "odwrotkonrad"
+github_owner    = "odwrotkonrad"
+local_runner_id = 53786471
 
 tree = {
   name        = "konradodwrot"
@@ -99,10 +100,11 @@ tree = {
           topics      = ["terraform", "infrastructure", "gitlab", "iac"]
         }
         ci_images = {
-          name        = "oci-images"
-          path        = "oci-images"
-          description = "Shared OCI container images: multi-arch ci-linux CI base, dev-sandbox config-baked dev image."
-          topics      = ["ci", "docker", "container", "gitlab", "toolchain"]
+          name                = "oci-images"
+          path                = "oci-images"
+          description         = "Shared OCI container images: multi-arch ci-linux CI base, dev-sandbox config-baked dev image."
+          topics              = ["ci", "docker", "container", "gitlab", "toolchain"]
+          enable_local_runner = true
         }
       }
     }

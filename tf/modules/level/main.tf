@@ -31,6 +31,13 @@ resource "gitlab_branch_protection" "this" {
   allow_force_push   = each.value.allow_force_push
 }
 
+resource "gitlab_project_runner_enablement" "local" {
+  for_each = { for k, p in var.projects : k => p if p.enable_local_runner }
+
+  project   = gitlab_project.this[each.key].id
+  runner_id = var.local_runner_id
+}
+
 resource "gitlab_project_push_mirror" "github" {
   for_each = var.projects
 

@@ -17,7 +17,7 @@ tree = {
       name             = "configs"
       path             = "configs"
       allow_force_push = true
-      description      = "Dotfiles extended into root OS space, loaded onto the host from one root/ tree by che: symlinked, copied (.host.cp), or rendered (*.host.tpl)."
+      description      = "Dotfiles extended into root OS space, loaded onto the host from one root/ tree by che: symlinked, copied (.ontoHost.cp), or rendered (*.ontoHost.tpl)."
       topics           = ["dotfiles", "configuration", "macos", "zsh", "che"]
     }
     notes = {
@@ -33,6 +33,12 @@ tree = {
       description = "Clones the konradodwrot group into $WORKSPACE_DIR and generates a recursive per-subgroup repo index (each subgroup's direct repos with purpose, child subgroups linked) as generated AGENTS.md/CLAUDE.md."
       topics      = ["workspace", "codegen", "documentation", "gitlab", "che"]
     }
+    sandbox = {
+      name        = "sandbox"
+      path        = "sandbox"
+      description = "Local claude session sandbox: kind cluster plus per-session pods running a config-baked image built FROM its published dev-sandbox toolchain base."
+      topics      = ["sandbox", "kubernetes", "kind", "docker", "claude"]
+    }
   }
 
   groups = {
@@ -45,7 +51,7 @@ tree = {
         che = {
           name        = "che"
           path        = "che"
-          description = "Spec-driven dotfile loader: detects OS+arch+virt, resolves a profile from che.yml, then loads only that profile's files, dirs, installs, and services. Renders *.host.tpl onto the host and *.repo.tpl onto the repo, resolving op:// (1Password) secret refs at render time."
+          description = "Spec-driven dotfile loader: detects OS+arch+virt, resolves a profile from che.yml, then loads only that profile's files, dirs, installs, and services. Renders *.tpl templates, each dest path deciding the target (relative: repo, ~/ or absolute: host), resolving op:// (1Password) secret refs at render time."
           topics      = ["go", "cli", "dotfiles", "configuration", "1password"]
         }
         render_files = {

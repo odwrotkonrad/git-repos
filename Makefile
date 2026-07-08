@@ -10,9 +10,9 @@ COMMANDS := render-templates run-repo-ci-prepare-hooks run-repo-ci-precommit-all
 .PHONY: $(WRAPPERS) $(COMMANDS)
 
 ##[>] Docs [genai-include]
-#[what] render *.repo.tpl onto the repo (.env, makefile.agents.md, repo-structure.md, CLAUDE.md, AGENTS.md, README.md)
+#[what] render *.ontoRepo.tpl onto the repo (.env, makefile.agents.md, repo-structure.md, CLAUDE.md, AGENTS.md, README.md)
 render-templates:
-	@che render-templates --repo
+	@che render-templates --profile=ontoRepo
 ##[<] Docs
 
 ##[>] CI [genai-include]

@@ -12,6 +12,7 @@ variable "tree" {
       topics              = optional(set(string), [])
       visibility          = optional(string, "public")
       enable_local_runner = optional(bool, false)
+      pages_unique_domain = optional(bool)
     })), {})
     groups = optional(any, {})
   })

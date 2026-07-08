@@ -18,6 +18,7 @@ variable "projects" {
     topics              = set(string)
     visibility          = string
     enable_local_runner = bool
+    pages_unique_domain = optional(bool)
   }))
 }
 

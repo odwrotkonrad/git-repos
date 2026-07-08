@@ -31,6 +31,13 @@ resource "gitlab_branch_protection" "this" {
   allow_force_push   = each.value.allow_force_push
 }
 
+resource "gitlab_project_pages_settings" "this" {
+  for_each = { for k, p in var.projects : k => p if p.pages_unique_domain != null }
+
+  project                  = gitlab_project.this[each.key].id
+  is_unique_domain_enabled = each.value.pages_unique_domain
+}
+
 resource "gitlab_project_runner_enablement" "local" {
   for_each = { for k, p in var.projects : k => p if p.enable_local_runner }
 

@@ -40,6 +40,13 @@ tree = {
       description = "Local claude session sandbox: kind cluster plus per-session pods running a config-baked image built FROM its published dev-sandbox toolchain base."
       topics      = ["sandbox", "kubernetes", "kind", "docker", "claude"]
     }
+    resume_md_pdf = {
+      name        = "resume-md-pdf"
+      path        = "resume-md-pdf"
+      description = "Generates a single-page PDF resume from Markdown: md-to-pdf rendering, styled/plain sources, content-match validation."
+      visibility  = "private"
+      topics      = ["resume", "markdown", "pdf", "pdf-one-pager", "file-generation"]
+    }
     go_modules = {
       name                = "go-modules"
       path                = "go-modules"

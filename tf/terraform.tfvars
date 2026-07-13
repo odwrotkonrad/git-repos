@@ -44,7 +44,7 @@ tree = {
       name        = "resume-md-pdf"
       path        = "resume-md-pdf"
       description = "Generates a single-page PDF resume from Markdown: md-to-pdf rendering, styled/plain sources, content-match validation."
-      visibility  = "private"
+      visibility  = "public"
       topics      = ["resume", "markdown", "pdf", "pdf-one-pager", "file-generation"]
     }
     go_modules = {
